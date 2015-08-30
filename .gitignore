@@ -1,0 +1,5 @@
+*~
+.DS_Store
+.idea*
+sample-app-darwin-x64*
+*.iml
