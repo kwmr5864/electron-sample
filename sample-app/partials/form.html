@@ -1,6 +1,9 @@
 <div class="input-group">
     <span class="input-group-btn">
-        <span class="btn btn-primary btn-lg" ng-click="hello()">ボタン</span>
+        <span class="btn btn-primary btn-lg" ng-click="add()">追加</span>
     </span>
     <input type="text" class="form-control input-lg" ng-model="message" placeholder="メッセージを入力してください">
 </div>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="x in messages">{{x}}</li>
+</ul>
