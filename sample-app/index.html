@@ -13,12 +13,7 @@
 <div class="container" ng-controller="appCtrl">
     <h1>Sample</h1>
     <p>Electronでアプリを作ろう</p>
-    <div class="input-group">
-        <span class="input-group-btn">
-            <span class="btn btn-primary btn-lg" ng-click="hello()">ボタン</span>
-        </span>
-        <input type="text" class="form-control input-lg" ng-model="message" placeholder="メッセージを入力してください">
-    </div>
+    <ng-include src="formUrl"></ng-include>
 </div>
 </body>
 </html>
