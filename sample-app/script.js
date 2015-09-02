@@ -11,4 +11,12 @@ angular.module('app', []).controller('appCtrl', function($scope) {
         });
         $scope.index++;
     };
+    $scope.del = function(id) {
+        for (var i in $scope.messages) {
+            if ($scope.messages[i].id === id) {
+                $scope.messages.splice(i, 1);
+                break;
+            }
+        }
+    };
 });

@@ -10,6 +10,7 @@
         <th>No.</th>
         <th>メッセージ</th>
         <th>登録日</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +18,7 @@
         <td>{{x.id}}</td>
         <td>{{x.value}}</td>
         <td>{{x.created_at|date:'yyyy/MM/dd HH:mm:ss'}}</td>
+        <td><span class="btn btn-default" ng-click="del(x.id)">削除</span></td>
     </tr>
     </tbody>
 </table>
