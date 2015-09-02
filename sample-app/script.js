@@ -3,7 +3,7 @@ angular.module('app', []).controller('appCtrl', function($scope) {
     $scope.message = '';
     $scope.formUrl = 'partials/form.html';
     $scope.messages = getStorageMessages();
-    $scope.index = $scope.messages.length < 1 ? 0 : $scope.messages[$scope.messages.length - 1].id;
+    $scope.index = localStorage.messagesIndex;
     $scope.add = function() {
         var message = {
             id: $scope.index,
@@ -11,8 +11,8 @@ angular.module('app', []).controller('appCtrl', function($scope) {
             created_at: +new Date()
         };
         $scope.messages.push(message);
-        saveStorageMessages($scope.messages);
         $scope.index++;
+        saveStorageMessages($scope.messages, $scope.index);
     };
     $scope.del = function(id) {
         for (var i in $scope.messages) {
@@ -21,13 +21,14 @@ angular.module('app', []).controller('appCtrl', function($scope) {
                 break;
             }
         }
-        saveStorageMessages($scope.messages);
+        saveStorageMessages($scope.messages, $scope.index);
     };
 });
 
 function initStorageMessages() {
     if (!localStorage.messages) {
         localStorage.messages = [];
+        localStorage.messagesIndex = 0;
     }
 }
 
@@ -42,6 +43,7 @@ function getStorageMessages() {
     return messages;
 }
 
-function saveStorageMessages(messages) {
+function saveStorageMessages(messages, messagesIndex) {
     localStorage.messages = JSON.stringify(messages);
+    localStorage.messagesIndex = messagesIndex;
 }
