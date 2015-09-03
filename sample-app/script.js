@@ -11,7 +11,7 @@ angular.module('app', []).controller('MainCtrl', function() {
                 value: this.message,
                 created_at: +new Date()
             };
-            this.messages.push(message);
+            this.messages.unshift(message);
             this.messagesIndex++;
             saveStorageMessages(this.messages, this.messagesIndex);
             this.message = '';
