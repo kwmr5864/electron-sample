@@ -47,7 +47,7 @@ function getStorageMessages() {
 }
 
 function getStorageMessagesIndex() {
-    var index = localStorage.messagesIndex
+    var index = localStorage.messagesIndex;
     return index ? JSON.parse(index) : 0;
 }
 

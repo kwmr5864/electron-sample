@@ -14,7 +14,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="x in main.messages">
+    <tr ng-repeat="x in main.messages track by $index">
         <td>{{x.id}}</td>
         <td>{{x.value}}</td>
         <td>{{x.created_at|date:'yyyy/MM/dd HH:mm:ss'}}</td>
