@@ -1,34 +1,37 @@
-angular.module('app', []).controller('appCtrl', function($scope) {
+angular.module('app', []).controller('MainCtrl', function() {
     initStorageMessages();
-    $scope.message = '';
-    $scope.formUrl = 'partials/form.html';
-    $scope.messages = getStorageMessages();
-    $scope.index = localStorage.messagesIndex;
-    $scope.add = function() {
-        var message = {
-            id: $scope.index,
-            value: this.message,
-            created_at: +new Date()
-        };
-        $scope.messages.push(message);
-        $scope.index++;
-        saveStorageMessages($scope.messages, $scope.index);
+    this.message = '';
+    this.formUrl = 'partials/form.html';
+    this.messages = getStorageMessages();
+    this.index = getStorageMessagesIndex();
+    this.add = function() {
+        if (this.message) {
+            var message = {
+                id: this.index,
+                value: this.message,
+                created_at: +new Date()
+            };
+            this.messages.push(message);
+            this.index++;
+            saveStorageMessages(this.messages, this.index);
+            this.message = '';
+        }
     };
-    $scope.del = function(id) {
-        for (var i in $scope.messages) {
-            if ($scope.messages[i].id === id) {
-                $scope.messages.splice(i, 1);
+    this.del = function(id) {
+        for (var i in this.messages) {
+            if (this.messages[i].id === id) {
+                this.messages.splice(i, 1);
                 break;
             }
         }
-        saveStorageMessages($scope.messages, $scope.index);
+        saveStorageMessages(this.messages, this.index);
     };
 });
 
 function initStorageMessages() {
     if (!localStorage.messages) {
-        localStorage.messages = [];
-        localStorage.messagesIndex = 0;
+        localStorage.messages = JSON.stringify([]);
+        localStorage.messagesIndex = JSON.stringify(0);
     }
 }
 
@@ -43,7 +46,12 @@ function getStorageMessages() {
     return messages;
 }
 
+function getStorageMessagesIndex() {
+    var index = localStorage.messagesIndex
+    return index ? JSON.parse(index) : 0;
+}
+
 function saveStorageMessages(messages, messagesIndex) {
     localStorage.messages = JSON.stringify(messages);
-    localStorage.messagesIndex = messagesIndex;
+    localStorage.messagesIndex = JSON.stringify(messagesIndex);
 }
