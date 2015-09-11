@@ -1,19 +1,18 @@
 angular.module('app', []).controller('MainCtrl', function() {
     initStorageMessages();
     this.message = '';
-    this.formUrl = 'partials/form.html';
     this.messages = getStorageMessages();
-    this.index = getStorageMessagesIndex();
+    this.messagesIndex = getStorageMessagesIndex();
     this.add = function() {
         if (this.message) {
             var message = {
-                id: this.index,
+                id: this.messagesIndex,
                 value: this.message,
                 created_at: +new Date()
             };
-            this.messages.push(message);
-            this.index++;
-            saveStorageMessages(this.messages, this.index);
+            this.messages.unshift(message);
+            this.messagesIndex++;
+            saveStorageMessages(this.messages, this.messagesIndex);
             this.message = '';
         }
     };
@@ -24,7 +23,12 @@ angular.module('app', []).controller('MainCtrl', function() {
                 break;
             }
         }
-        saveStorageMessages(this.messages, this.index);
+        saveStorageMessages(this.messages, this.messagesIndex);
+    };
+    this.clear = function() {
+        this.messages = [];
+        this.messagesIndex = 0;
+        saveStorageMessages(this.messages, this.messagesIndex)
     };
 });
 
