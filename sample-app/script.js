@@ -1,7 +1,6 @@
 angular.module('app', []).controller('MainCtrl', function() {
     initStorageMessages();
     this.message = '';
-    this.formUrl = 'partials/form.html';
     this.messages = getStorageMessages();
     this.messagesIndex = getStorageMessagesIndex();
     this.add = function() {
