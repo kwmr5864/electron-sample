@@ -2,11 +2,11 @@
 table.table.table-striped.table-hover
     thead
         tr
-            th No.
-            th メッセージ
-            th 登録日時
-            th 更新日時
-            th
+            th.th-index No.
+            th.th-message メッセージ
+            th.th-datetime 登録日時
+            th.th-datetime 更新日時
+            th.th-btn
     tbody
         tr(ng-repeat='x in main.messages track by $index')
             td {{x.id}}

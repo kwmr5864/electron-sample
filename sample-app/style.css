@@ -1,0 +1,12 @@
+.th-index {
+    min-width: 80px;
+}
+.th-message {
+    min-width: 310px;
+}
+.th-datetime {
+    min-width: 100px;
+}
+.th-btn {
+    min-width: 130px;
+}
