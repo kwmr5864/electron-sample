@@ -28,10 +28,12 @@
         <tbody>
           <tr ng-repeat="x in main.messages track by $index">
             <td>{{x.id}}</td>
-            <td>{{x.value}}</td>
+            <td>
+              <input type="text" ng-if="x.editable" ng-model="x.value" class="form-control input-lg"><span ng-if="!x.editable">{{x.value}}</span>
+            </td>
             <td>{{x.created_at|date:'yyyy/MM/dd HH:mm:ss'}}</td>
             <td>
-              <div class="btn-group"><span ng-click="main.edit(x.id)" class="btn btn-default">編集</span><span ng-click="main.del(x.id)" class="btn btn-default">削除</span></div>
+              <div class="btn-group"><span ng-if="x.editable" ng-click="main.save(x.id)" class="btn btn-primary">更新</span><span ng-if="!x.editable" ng-click="main.edit(x.id)" class="btn btn-default">編集</span><span ng-click="main.del(x.id)" class="btn btn-default">削除</span></div>
             </td>
           </tr>
         </tbody>
