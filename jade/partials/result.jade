@@ -11,7 +11,7 @@ table.table.table-striped.table-hover
         tr(ng-repeat='x in main.messages track by $index')
             td {{x.id}}
             td
-                input.form-control.input-lg(type='text', ng-if='x.editable' ng-model='x.value')
+                input.form-control.input-lg(type='text', ng-if='x.editable' ng-model='x.input')
                 span(ng-if='!x.editable') {{x.value}}
             td {{x.created_at|date:'yyyy/MM/dd HH:mm:ss'}}
             td {{x.updated_at|date:'yyyy/MM/dd HH:mm:ss'}}
