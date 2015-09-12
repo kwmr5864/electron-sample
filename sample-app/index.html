@@ -30,7 +30,9 @@
             <td>{{x.id}}</td>
             <td>{{x.value}}</td>
             <td>{{x.created_at|date:'yyyy/MM/dd HH:mm:ss'}}</td>
-            <td><span ng-click="main.del(x.id)" class="btn btn-default">削除</span></td>
+            <td>
+              <div class="btn-group"><span ng-click="main.edit(x.id)" class="btn btn-default">編集</span><span ng-click="main.del(x.id)" class="btn btn-default">削除</span></div>
+            </td>
           </tr>
         </tbody>
       </table>

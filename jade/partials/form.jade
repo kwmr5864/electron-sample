@@ -1,7 +1,7 @@
 //- form.jade
-div(class='input-group')
-    span(class='input-group-btn')
-        span(class='btn btn-primary btn-lg' ng-click='main.add()') 追加
-    input(type='text' class='form-control input-lg' ng-model='main.message' placeholder='メッセージを入力してください')
-    span(class='input-group-btn')
-        span(class='btn btn-default btn-lg' ng-click='main.clear()') 全部消す
+div.input-group
+    span.input-group-btn
+        span.btn.btn-primary.btn-lg(ng-click='main.add()') 追加
+    input.form-control.input-lg(type='text' ng-model='main.message' placeholder='メッセージを入力してください')
+    span.input-group-btn
+        span.btn.btn-default.btn-lg(ng-click='main.clear()') 全部消す

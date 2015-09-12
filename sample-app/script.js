@@ -16,6 +16,13 @@ angular.module('app', []).controller('MainCtrl', function() {
             this.message = '';
         }
     };
+    this.edit = function(id) {
+        for (var i in this.messages) {
+            if (this.messages[i].id === id) {
+                this.messages[i].value = this.message;
+            }
+        }
+    };
     this.del = function(id) {
         for (var i in this.messages) {
             if (this.messages[i].id === id) {
