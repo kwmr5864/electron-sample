@@ -21,6 +21,7 @@ angular.module('app', []).controller('MainCtrl', function() {
         for (var i in this.messages) {
             if (this.messages[i].id === id) {
                 this.messages[i].editable = true;
+                this.messages[i].input = this.messages[i].value;
                 break;
             }
         }
@@ -28,12 +29,18 @@ angular.module('app', []).controller('MainCtrl', function() {
     this.save = function(id) {
         for (var i in this.messages) {
             if (this.messages[i].id === id) {
+                if (this.messages[i].input.length < 1) {
+                    break;
+                }
                 this.messages[i].editable = false;
-                this.messages[i].updated_at = +new Date();
+                if (this.messages[i].input !== this.messages[i].value) {
+                    this.messages[i].value = this.messages[i].input;
+                    this.messages[i].updated_at = +new Date();
+                    saveStorageMessages(this.messages, this.messagesIndex);
+                }
                 break;
             }
         }
-        saveStorageMessages(this.messages, this.messagesIndex);
     };
     this.del = function(id) {
         for (var i in this.messages) {
