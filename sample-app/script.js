@@ -29,6 +29,7 @@ angular.module('app', []).controller('MainCtrl', function() {
         for (var i in this.messages) {
             if (this.messages[i].id === id) {
                 this.messages[i].editable = false;
+                this.messages[i].updated_at = +new Date();
                 break;
             }
         }

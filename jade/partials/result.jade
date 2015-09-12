@@ -4,7 +4,8 @@ table.table.table-striped.table-hover
         tr
             th No.
             th メッセージ
-            th 登録日
+            th 登録日時
+            th 更新日時
             th
     tbody
         tr(ng-repeat='x in main.messages track by $index')
@@ -13,6 +14,7 @@ table.table.table-striped.table-hover
                 input.form-control.input-lg(type='text', ng-if='x.editable' ng-model='x.value')
                 span(ng-if='!x.editable') {{x.value}}
             td {{x.created_at|date:'yyyy/MM/dd HH:mm:ss'}}
+            td {{x.updated_at|date:'yyyy/MM/dd HH:mm:ss'}}
             td
                 .btn-group
                     span.btn.btn-primary(ng-if='x.editable' ng-click='main.save(x.id)') 更新
