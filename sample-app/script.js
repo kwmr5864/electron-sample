@@ -8,13 +8,32 @@ angular.module('app', []).controller('MainCtrl', function() {
             var message = {
                 id: this.messagesIndex,
                 value: this.message,
-                created_at: +new Date()
+                created_at: +new Date(),
+                editable: false
             };
             this.messages.unshift(message);
             this.messagesIndex++;
             saveStorageMessages(this.messages, this.messagesIndex);
             this.message = '';
         }
+    };
+    this.edit = function(id) {
+        for (var i in this.messages) {
+            if (this.messages[i].id === id) {
+                this.messages[i].editable = true;
+                break;
+            }
+        }
+    };
+    this.save = function(id) {
+        for (var i in this.messages) {
+            if (this.messages[i].id === id) {
+                this.messages[i].editable = false;
+                this.messages[i].updated_at = +new Date();
+                break;
+            }
+        }
+        saveStorageMessages(this.messages, this.messagesIndex);
     };
     this.del = function(id) {
         for (var i in this.messages) {
